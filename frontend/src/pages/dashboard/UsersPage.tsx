@@ -143,7 +143,7 @@ export const UsersPage: React.FC = () => {
             <TextInput
               label="Official Email"
               type="email"
-              placeholder="nathan.drake@civicguard.gov"
+              placeholder="nathan.drake@Civora.gov"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required

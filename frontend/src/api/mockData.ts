@@ -3,7 +3,7 @@ import { Incident, Team, User, Alert, RiskPrediction, AnalyticsSummary, FieldAss
 export const INITIAL_USERS: User[] = [
   {
     id: 'usr_1',
-    email: 'admin@civicguard.gov',
+    email: 'admin@Civora.gov',
     name: 'Director Eleanor Vance',
     role: 'admin',
     department: 'Executive Administration',
@@ -11,7 +11,7 @@ export const INITIAL_USERS: User[] = [
   },
   {
     id: 'usr_2',
-    email: 'control@civicguard.gov',
+    email: 'control@Civora.gov',
     name: 'Marcus Chen',
     role: 'control_room',
     department: 'Central Dispatch Command',
@@ -19,7 +19,7 @@ export const INITIAL_USERS: User[] = [
   },
   {
     id: 'usr_3',
-    email: 'roads.officer@civicguard.gov',
+    email: 'roads.officer@Civora.gov',
     name: 'Sgt. Priya Sharma',
     role: 'department_officer',
     department: 'Roads & Infrastructure',
@@ -27,7 +27,7 @@ export const INITIAL_USERS: User[] = [
   },
   {
     id: 'usr_4',
-    email: 'water.officer@civicguard.gov',
+    email: 'water.officer@Civora.gov',
     name: 'Tariq Al-Mansoor',
     role: 'department_officer',
     department: 'Water & Sanitation',
@@ -35,7 +35,7 @@ export const INITIAL_USERS: User[] = [
   },
   {
     id: 'usr_5',
-    email: 'field1@civicguard.gov',
+    email: 'field1@Civora.gov',
     name: 'Carlos Mendez (Unit Alpha-1)',
     role: 'field_team',
     department: 'Roads & Infrastructure',

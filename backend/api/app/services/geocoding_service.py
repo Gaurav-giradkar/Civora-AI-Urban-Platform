@@ -7,7 +7,7 @@ from app.utils.logging import get_logger
 
 logger = get_logger(__name__)
 
-_HEADERS = {"User-Agent": "CivicGuard/1.0 (civic-issue-reporting-platform)"}
+_HEADERS = {"User-Agent": "Civora/1.0 (civic-issue-reporting-platform)"}
 
 
 def reverse_geocode(lat: float, lng: float) -> str | None:

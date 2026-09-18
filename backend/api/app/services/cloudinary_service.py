@@ -16,7 +16,7 @@ cloudinary.config(
 )
 
 
-def upload_image(file_bytes: bytes, folder: str = "civicguard") -> str:
+def upload_image(file_bytes: bytes, folder: str = "Civora") -> str:
     """Uploads raw image bytes to Cloudinary and returns the resulting secure URL."""
     try:
         result = cloudinary.uploader.upload(file_bytes, folder=folder, resource_type="image")

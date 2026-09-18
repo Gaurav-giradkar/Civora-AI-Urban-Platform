@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: civicguard-api
+    name: Civora-api
     env: docker
     plan: free
     dockerfilePath: api/Dockerfile
@@ -57,7 +57,7 @@ services:
         sync: false
 
   - type: web
-    name: civicguard-ml
+    name: Civora-ml
     env: docker
     plan: free
     dockerfilePath: ml-service/Dockerfile

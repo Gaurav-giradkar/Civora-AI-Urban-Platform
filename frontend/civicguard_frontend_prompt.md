@@ -1,4 +1,4 @@
-# CivicGuard — Frontend (Landing + Government Dashboard)
+# Civora — Frontend (Landing + Government Dashboard)
 ### Prompt for Antigravity
 
 Copy everything below as-is. This is the complete, final spec — design tokens, site map, every
@@ -11,7 +11,7 @@ decisions below.
 
 A single React + Vite app with two zones:
 
-1. **Public landing page** (`/`) — marketing site for the CivicGuard citizen Android app. Not
+1. **Public landing page** (`/`) — marketing site for the Civora citizen Android app. Not
    behind any login. Includes an APK download CTA.
 2. **Government dashboard** (`/governmentdashboard`) — login-gated. Two experiences behind the
    same gate: **admin** (full access + can create team accounts) and **team members**
@@ -35,7 +35,7 @@ platform:**
 - **Font substitution is already specified in the reference doc** — use Inter (weight 400/600/700)
   in place of CoinbaseDisplay/CoinbaseSans, and JetBrains Mono in place of CoinbaseMono. Do not
   license or fake the real Coinbase fonts.
-- **`{colors.primary}` (#0052ff) stays as CivicGuard's primary action color** — a confident blue
+- **`{colors.primary}` (#0052ff) stays as Civora's primary action color** — a confident blue
   reads as trustworthy/institutional for a government platform too, no change needed there.
 - **New tokens needed, not in the reference doc — add these, following the same naming
   convention:**
@@ -51,7 +51,7 @@ platform:**
   colors.
 
 **Component reuse mapping** (reference component → what it becomes here):
-| Reference component | Used for in CivicGuard |
+| Reference component | Used for in Civora |
 |---|---|
 | `hero-band-dark` | Landing page hero |
 | `product-ui-card-dark` | Floating phone/app-screenshot mockups in the hero |
@@ -93,7 +93,7 @@ Role-based access within `/governmentdashboard/*`:
 Following the reference's dark/light band rhythm (`hero-band-dark` → light band → light band →
 `cta-band-dark` → `footer-light`):
 
-1. **`top-nav-on-dark`** over the hero: CivicGuard wordmark left, nav links (How it works /
+1. **`top-nav-on-dark`** over the hero: Civora wordmark left, nav links (How it works /
    Features / For Government — this last one scroll-links or routes to
    `/governmentdashboard`, styled subtly, not as a prominent CTA), a single `button-pill-cta`
    right: "Download the app"

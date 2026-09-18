@@ -8,7 +8,7 @@ const STEPS = [
     step: '01',
     title: 'Snap photo & precise GPS',
     description:
-      'Point your phone camera at potholes, broken lights, or water leaks. CivicGuard captures high-accuracy coordinates automatically.',
+      'Point an onboard camera or capture unit at potholes, flood spots, or damaged roads. Civora captures high-accuracy coordinates automatically.',
     icon: <Camera className="w-5 h-5 text-primary" />,
     tag: 'CITIZEN CAPTURE',
     visual: (
@@ -74,12 +74,12 @@ export const HowItWorks: React.FC = () => {
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <BadgePill label="HOW CIVICGUARD WORKS" variant="neutral" className="mb-4" />
+          <BadgePill label="HOW CIVORA WORKS" variant="neutral" className="mb-4" />
           <h2 className="type-display-lg text-ink max-w-2xl">
-            From citizen report to municipal repair in four transparent steps.
+            From transit observation to municipal repair in four transparent steps.
           </h2>
           <p className="type-body-md text-muted max-w-xl mt-4">
-            CivicGuard bridges citizens and municipal engineers with real-time telemetry, automated triage, and verifiable proof of work.
+            Civora bridges mobile urban sensing and municipal engineers with real-time telemetry, automated triage, and verifiable proof of work.
           </p>
         </div>
 

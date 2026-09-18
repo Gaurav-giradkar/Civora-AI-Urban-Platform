@@ -22,7 +22,7 @@ def clean_database(db):
         db.execute(text("DELETE FROM reports WHERE description LIKE 'Simulated%' OR description LIKE 'Phase 4%';"))
         db.execute(text("DELETE FROM incidents WHERE title LIKE 'Simulation%' OR title LIKE 'Severe Pothole%';"))
         db.execute(text("DELETE FROM device_tokens WHERE fcm_token LIKE 'sim-%' OR fcm_token LIKE 'phase4-%';"))
-        db.execute(text("DELETE FROM users WHERE email IN ('sim_admin@civicguard.gov', 'sim_field@civicguard.gov', 'phase4_test_official@civicguard.gov', 'phase4_citizen@example.com');"))
+        db.execute(text("DELETE FROM users WHERE email IN ('sim_admin@Civora.gov', 'sim_field@Civora.gov', 'phase4_test_official@Civora.gov', 'phase4_citizen@example.com');"))
         db.execute(text("DELETE FROM teams WHERE name = 'Rapid Response Team A';"))
         db.execute(text("DELETE FROM departments WHERE name = 'Simulation Public Works';"))
         db.commit()
@@ -33,7 +33,7 @@ def clean_database(db):
 
 def simulate_full_runtime():
     print("=" * 65)
-    print("CivicGuard Phase 13: Live Production Runtime Simulation")
+    print("Civora Phase 13: Live Production Runtime Simulation")
     print("=" * 65)
 
     client = TestClient(app)
@@ -60,7 +60,7 @@ def simulate_full_runtime():
         # Admin user
         admin = User(
             id=admin_user_id,
-            email="sim_admin@civicguard.gov",
+            email="sim_admin@Civora.gov",
             name="Control Admin",
             role="admin",
             password_hash=hash_password("AdminPass123!"),
@@ -71,7 +71,7 @@ def simulate_full_runtime():
         # Field user
         field_user = User(
             id=field_user_id,
-            email="sim_field@civicguard.gov",
+            email="sim_field@Civora.gov",
             name="Field Technician",
             role="field_team",
             password_hash=hash_password("FieldPass123!"),
@@ -103,7 +103,7 @@ def simulate_full_runtime():
 
         print("\n[Step 2] Admin Workflow: Login, Review Incidents & Dispatch")
         # Admin Login
-        login_res = client.post("/api/auth/login", json={"email": "sim_admin@civicguard.gov", "password": "AdminPass123!"})
+        login_res = client.post("/api/auth/login", json={"email": "sim_admin@Civora.gov", "password": "AdminPass123!"})
         assert login_res.status_code == 200
         admin_token = login_res.json()["access_token"]
         admin_headers = {"Authorization": f"Bearer {admin_token}"}
@@ -161,7 +161,7 @@ def simulate_full_runtime():
 
         print("\n[Step 3] Field Team Workflow: Login, Update Status & Resolve")
         # Field Login
-        field_login = client.post("/api/auth/login", json={"email": "sim_field@civicguard.gov", "password": "FieldPass123!"})
+        field_login = client.post("/api/auth/login", json={"email": "sim_field@Civora.gov", "password": "FieldPass123!"})
         assert field_login.status_code == 200
         field_token = field_login.json()["access_token"]
         field_headers = {"Authorization": f"Bearer {field_token}"}

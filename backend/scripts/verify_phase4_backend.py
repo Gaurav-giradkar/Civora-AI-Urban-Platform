@@ -18,7 +18,7 @@ from app.utils.security import hash_password, create_access_token
 
 def run_phase4_verification():
     print("=" * 60)
-    print("CivicGuard Phase 4: Backend API Live Verification")
+    print("Civora Phase 4: Backend API Live Verification")
     print("=" * 60)
     results = {}
 
@@ -49,7 +49,7 @@ def run_phase4_verification():
     test_user_id = str(uuid.uuid4())
     try:
         # Clean up any previous test user and tokens
-        existing = db.query(User).filter(User.email == "phase4_test_official@civicguard.gov").first()
+        existing = db.query(User).filter(User.email == "phase4_test_official@Civora.gov").first()
         if existing:
             db.query(DeviceToken).filter(DeviceToken.user_id == existing.id).delete()
             db.delete(existing)
@@ -59,7 +59,7 @@ def run_phase4_verification():
         # Create a test official in DB
         official = User(
             id=test_user_id,
-            email="phase4_test_official@civicguard.gov",
+            email="phase4_test_official@Civora.gov",
             name="Official Test User",
             role="admin",
             password_hash=hash_password("SuperSecretPass123!"),
@@ -70,7 +70,7 @@ def run_phase4_verification():
 
         # Test valid login
         login_res = client.post("/api/auth/login", json={
-            "email": "phase4_test_official@civicguard.gov",
+            "email": "phase4_test_official@Civora.gov",
             "password": "SuperSecretPass123!",
         })
         print(f"  POST /api/auth/login -> Status {login_res.status_code}")
@@ -82,7 +82,7 @@ def run_phase4_verification():
 
         # Test invalid password
         bad_login = client.post("/api/auth/login", json={
-            "email": "phase4_test_official@civicguard.gov",
+            "email": "phase4_test_official@Civora.gov",
             "password": "WrongPassword!",
         })
         assert bad_login.status_code == 401

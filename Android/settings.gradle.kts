@@ -22,6 +22,6 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "CivicGuard"
+rootProject.name = "Civora"
 
 include(":app")

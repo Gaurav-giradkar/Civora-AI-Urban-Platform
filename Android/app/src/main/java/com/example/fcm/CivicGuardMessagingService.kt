@@ -3,17 +3,17 @@ package com.example.fcm
 import android.util.Log
 import com.example.data.api.NetworkClient
 import com.example.data.local.UserPreferencesManager
-import com.example.data.repository.CivicGuardRepository
+import com.example.data.repository.CivoraRepository
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class CivicGuardMessagingService : FirebaseMessagingService() {
+class CivoraMessagingService : FirebaseMessagingService() {
 
     companion object {
-        private const val TAG = "CivicGuardFCM"
+        private const val TAG = "CivoraFCM"
     }
 
     private val serviceScope = CoroutineScope(Dispatchers.IO)
@@ -23,7 +23,7 @@ class CivicGuardMessagingService : FirebaseMessagingService() {
         Log.d(TAG, "Refreshed FCM Token: $token")
         val userPrefs = UserPreferencesManager(applicationContext)
         val networkClient = NetworkClient(applicationContext, userPrefs)
-        val repo = CivicGuardRepository(networkClient.apiService, networkClient.cloudinaryUploader, userPrefs)
+        val repo = CivoraRepository(networkClient.apiService, networkClient.cloudinaryUploader, userPrefs)
 
         serviceScope.launch {
             userPrefs.saveFcmToken(token)

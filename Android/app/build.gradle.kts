@@ -14,7 +14,7 @@ android {
   compileSdk { version = release(36) { minorApiLevel = 1 } }
 
   defaultConfig {
-    applicationId = "com.aistudio.civicguard.cgxrqp"
+    applicationId = "com.aistudio.Civora.cgxrqp"
     minSdk = 24
     targetSdk = 36
     versionCode = 1
@@ -22,9 +22,9 @@ android {
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-    buildConfigField("String", "API_BASE_URL", "\"https://civicguard-api.onrender.com\"")
+    buildConfigField("String", "API_BASE_URL", "\"https://Civora-api.onrender.com\"")
     buildConfigField("String", "CLOUDINARY_CLOUD_NAME", "\"dbr7htwkz\"")
-    buildConfigField("String", "CLOUDINARY_UPLOAD_PRESET", "\"civicguard_reports\"")
+    buildConfigField("String", "CLOUDINARY_UPLOAD_PRESET", "\"Civora_reports\"")
 
 
   }

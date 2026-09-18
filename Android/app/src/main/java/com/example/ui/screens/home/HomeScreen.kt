@@ -185,7 +185,7 @@ private fun HomeTopBar(
             Spacer(modifier = Modifier.width(12.dp))
             Column {
                 Text(
-                    text = "CivicGuard",
+                    text = "Civora",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.ExtraBold,
                     color = MaterialTheme.colorScheme.onBackground
@@ -439,7 +439,7 @@ private fun HowItWorksSection() {
             .padding(horizontal = 20.dp)
     ) {
         Text(
-            text = "How CivicGuard Works",
+            text = "How Civora Works",
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.onBackground

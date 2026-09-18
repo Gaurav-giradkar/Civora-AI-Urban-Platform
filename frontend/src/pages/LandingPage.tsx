@@ -15,8 +15,8 @@ import { Download, ArrowRight, Shield, CheckCircle, Smartphone } from 'lucide-re
 export const LandingPage: React.FC = () => {
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/civicguard.apk';
-    link.download = 'civicguard.apk';
+    link.href = '/Civora.apk';
+    link.download = 'Civora.apk';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -54,7 +54,7 @@ export const LandingPage: React.FC = () => {
             </h1>
 
             <p className="type-body-md text-on-dark-soft max-w-lg mb-8 text-[18px] leading-relaxed">
-              CivicGuard pairs citizen smartphone cameras with real-time AI vision and municipal dispatch to repair broken roads, streetlights, and water mains faster.
+              Civora pairs automated transit fleet sensing with real-time AI vision and municipal dispatch to detect and repair potholes, road damage, and urban hazards faster.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">

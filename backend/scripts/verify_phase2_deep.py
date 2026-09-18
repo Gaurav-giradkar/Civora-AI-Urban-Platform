@@ -13,7 +13,7 @@ from sqlalchemy import create_engine, text
 
 def run_deep_checks():
     print("=" * 60)
-    print("CivicGuard Phase 2: Deep PostGIS & Schema Verification")
+    print("Civora Phase 2: Deep PostGIS & Schema Verification")
     print("=" * 60)
 
     engine = create_engine(settings.DATABASE_URL)

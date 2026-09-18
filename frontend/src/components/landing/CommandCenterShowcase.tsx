@@ -84,7 +84,7 @@ export const CommandCenterShowcase: React.FC = () => {
                 <span className="w-3 h-3 rounded-full bg-[#27c93f]" />
               </div>
               <div className="hidden sm:flex items-center gap-2 pl-3 border-l border-white/10 text-[12px] font-mono text-on-dark-soft">
-                <span>gov.civicguard.internal/command</span>
+                <span>civora.internal/command</span>
                 <span className="text-white/20">•</span>
                 <span className="text-semantic-up flex items-center gap-1 font-bold">
                   <span className="w-1.5 h-1.5 rounded-full bg-semantic-up animate-pulse" /> LIVE TELEMETRY

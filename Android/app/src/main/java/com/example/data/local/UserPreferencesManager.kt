@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import java.util.UUID
 
-private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "civicguard_prefs")
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "Civora_prefs")
 
 class UserPreferencesManager(private val context: Context) {
 

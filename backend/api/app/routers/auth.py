@@ -34,8 +34,8 @@ def request_otp(payload: OTPRequest, db: Session = Depends(get_db)) -> None:
     store_otp(payload.email, code, db=db)
     send_email(
         to=payload.email,
-        subject="Your CivicGuard verification code",
-        body=f"<p>Your CivicGuard verification code is <strong>{code}</strong>. "
+        subject="Your Civora verification code",
+        body=f"<p>Your Civora verification code is <strong>{code}</strong>. "
         f"It expires in 10 minutes.</p>",
     )
 

@@ -16,14 +16,14 @@ import androidx.navigation.compose.rememberNavController
 import com.example.data.api.CloudinaryUploader
 import com.example.data.api.NetworkClient
 import com.example.data.local.UserPreferencesManager
-import com.example.data.repository.CivicGuardRepository
+import com.example.data.repository.CivoraRepository
 import com.example.ui.navigation.AppNavigation
 import com.example.ui.navigation.Screen
-import com.example.ui.theme.CivicGuardTheme
+import com.example.ui.theme.CivoraTheme
 
 class MainActivity : ComponentActivity() {
 
-    private lateinit var repository: CivicGuardRepository
+    private lateinit var repository: CivoraRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +33,10 @@ class MainActivity : ComponentActivity() {
         val networkClient = NetworkClient(applicationContext, userPreferencesManager)
         val apiService = networkClient.apiService
         val cloudinaryUploader = networkClient.cloudinaryUploader
-        repository = CivicGuardRepository(apiService, cloudinaryUploader, userPreferencesManager)
+        repository = CivoraRepository(apiService, cloudinaryUploader, userPreferencesManager)
 
         setContent {
-            CivicGuardTheme {
+            CivoraTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -64,7 +64,7 @@ class MainActivity : ComponentActivity() {
 
     private fun handleIncomingIntent(intent: Intent?, navController: androidx.navigation.NavController) {
         intent?.data?.let { uri ->
-            if (uri.scheme == "civicguard" && uri.host == "navigate") {
+            if (uri.scheme == "Civora" && uri.host == "navigate") {
                 val destination = uri.getQueryParameter("destination")
                 when (destination) {
                     "alerts" -> navController.navigate(Screen.Alerts.route)

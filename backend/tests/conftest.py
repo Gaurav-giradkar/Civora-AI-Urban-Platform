@@ -20,7 +20,7 @@ from sqlalchemy.orm import sessionmaker
 
 TEST_DATABASE_URL = os.environ.get(
     "TEST_DATABASE_URL",
-    "postgresql://postgres@127.0.0.1:5432/civicguard_test",
+    "postgresql://postgres:postgres@127.0.0.1:5432/Civora_test",
 )
 
 os.environ["DATABASE_URL"] = TEST_DATABASE_URL

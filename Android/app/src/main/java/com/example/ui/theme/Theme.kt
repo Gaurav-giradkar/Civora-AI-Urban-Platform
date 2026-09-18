@@ -44,7 +44,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun CivicGuardTheme(
+fun CivoraTheme(
     darkTheme: Boolean = false, // Enforce clean light mode for easy and friendly experience
     content: @Composable () -> Unit
 ) {

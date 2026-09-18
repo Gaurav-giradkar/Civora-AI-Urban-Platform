@@ -1,4 +1,8 @@
-import React, { useState, useEffect } from 'react';
+"""Update IncidentMap.tsx with Civora Fleet markers, Urban Issue popups, and observation telemetry."""
+
+MAP_PATH = r"c:\My_stuff\Civora\frontend\src\components\map\IncidentMap.tsx"
+
+map_code = '''import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import { Incident, BusUnit, ObservationDetail } from '../../types';
@@ -178,7 +182,7 @@ export const IncidentMap: React.FC<IncidentMapProps> = ({
         className="w-full h-full"
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          attribution=\'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors\'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
@@ -325,3 +329,8 @@ export const IncidentMap: React.FC<IncidentMapProps> = ({
     </div>
   );
 };
+'''
+
+with open(MAP_PATH, "w", encoding="utf-8") as f:
+    f.write(map_code)
+print("Updated IncidentMap.tsx successfully!")

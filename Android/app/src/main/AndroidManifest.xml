@@ -34,7 +34,7 @@
         </provider>
 
         <service
-            android:name=".fcm.CivicGuardMessagingService"
+            android:name=".fcm.CivoraMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -57,7 +57,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:scheme="civicguard"
+                    android:scheme="Civora"
                     android:host="navigate" />
             </intent-filter>
         </activity>

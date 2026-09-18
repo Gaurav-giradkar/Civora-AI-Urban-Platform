@@ -32,12 +32,12 @@ def seed():
             db.flush()
 
         users_to_seed = [
-            {"email": "admin@civicguard.gov", "name": "Director Admin", "role": "admin", "dept": None, "team": None},
-            {"role": "control_room", "name": "Control Room Operator", "email": "control@civicguard.gov", "dept": None, "team": None},
-            {"role": "department_officer", "name": "Public Works Head", "email": "roads.officer@civicguard.gov", "dept": dept_pwd.id, "team": None},
-            {"role": "department_officer", "name": "Public Works Head", "email": "pwd_head@civicguard.gov", "dept": dept_pwd.id, "team": None},
-            {"role": "field_team", "name": "Field Team Lead", "email": "field1@civicguard.gov", "dept": dept_pwd.id, "team": team.id},
-            {"role": "field_team", "name": "Field Team Alpha", "email": "field_alpha@civicguard.gov", "dept": dept_pwd.id, "team": team.id},
+            {"email": "admin@Civora.gov", "name": "Director Admin", "role": "admin", "dept": None, "team": None},
+            {"role": "control_room", "name": "Control Room Operator", "email": "control@Civora.gov", "dept": None, "team": None},
+            {"role": "department_officer", "name": "Public Works Head", "email": "roads.officer@Civora.gov", "dept": dept_pwd.id, "team": None},
+            {"role": "department_officer", "name": "Public Works Head", "email": "pwd_head@Civora.gov", "dept": dept_pwd.id, "team": None},
+            {"role": "field_team", "name": "Field Team Lead", "email": "field1@Civora.gov", "dept": dept_pwd.id, "team": team.id},
+            {"role": "field_team", "name": "Field Team Alpha", "email": "field_alpha@Civora.gov", "dept": dept_pwd.id, "team": team.id},
         ]
 
         hashed_pw = hash_password("password123")

@@ -1,9 +1,9 @@
 services:
   # ---------------------------------------------------------
-  # 1. CivicGuard FastAPI Backend Service
+  # 1. Civora FastAPI Backend Service
   # ---------------------------------------------------------
   - type: web
-    name: civicguard-api
+    name: Civora-api
     env: docker
     plan: free
     dockerfilePath: backend/api/Dockerfile
@@ -55,7 +55,7 @@ services:
       - key: ML_SERVICE_URL
         fromService:
           type: web
-          name: civicguard-ml
+          name: Civora-ml
           property: host
       - key: FRONTEND_ORIGIN
         sync: false
@@ -63,10 +63,10 @@ services:
         sync: false
 
   # ---------------------------------------------------------
-  # 2. CivicGuard Computer Vision (YOLO11s) Service
+  # 2. Civora Computer Vision (YOLO11s) Service
   # ---------------------------------------------------------
   - type: web
-    name: civicguard-ml
+    name: Civora-ml
     env: docker
     plan: free
     dockerfilePath: backend/ml-service/Dockerfile

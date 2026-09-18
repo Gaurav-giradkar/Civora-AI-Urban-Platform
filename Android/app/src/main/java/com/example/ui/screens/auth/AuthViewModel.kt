@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.data.model.ReportResponse
-import com.example.data.repository.CivicGuardRepository
+import com.example.data.repository.CivoraRepository
 import com.example.data.repository.ReportSubmissionResult
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,7 +30,7 @@ data class AuthUiState(
 )
 
 class AuthViewModel(
-    private val repository: CivicGuardRepository
+    private val repository: CivoraRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(AuthUiState())

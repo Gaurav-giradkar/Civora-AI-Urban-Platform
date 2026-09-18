@@ -32,14 +32,14 @@ sealed class ReportSubmissionResult {
     data class Error(val message: String) : ReportSubmissionResult()
 }
 
-class CivicGuardRepository(
+class CivoraRepository(
     private val apiService: ApiService,
     private val cloudinaryUploader: CloudinaryUploader,
     val userPreferencesManager: UserPreferencesManager
 ) {
 
     companion object {
-        private const val TAG = "CivicGuardRepo"
+        private const val TAG = "CivoraRepo"
     }
 
     val isLoggedInFlow: Flow<Boolean> = userPreferencesManager.isLoggedInFlow
@@ -182,7 +182,7 @@ class CivicGuardRepository(
                 Result.success(token)
             } else if (otp == "123456" || otp.length == 6) {
                 // Fallback token for local offline testing
-                val simulatedToken = "jwt_civicguard_${UUID.randomUUID().toString().take(12)}"
+                val simulatedToken = "jwt_Civora_${UUID.randomUUID().toString().take(12)}"
                 userPreferencesManager.saveAuthToken(simulatedToken, email)
                 registerFcmTokenIfAvailable()
                 Result.success(simulatedToken)
@@ -192,7 +192,7 @@ class CivicGuardRepository(
             }
         } catch (e: Exception) {
             if (otp == "123456" || otp.length == 6) {
-                val simulatedToken = "jwt_civicguard_${UUID.randomUUID().toString().take(12)}"
+                val simulatedToken = "jwt_Civora_${UUID.randomUUID().toString().take(12)}"
                 userPreferencesManager.saveAuthToken(simulatedToken, email)
                 registerFcmTokenIfAvailable()
                 Result.success(simulatedToken)
