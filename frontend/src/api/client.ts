@@ -12,7 +12,7 @@ export const apiClient = axios.create({
 // Request interceptor: Attach JWT if present in localStorage
 apiClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('civicguard_token');
+    const token = localStorage.getItem('Civora_token');
     if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -26,8 +26,8 @@ apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      localStorage.removeItem('civicguard_token');
-      localStorage.removeItem('civicguard_user');
+      localStorage.removeItem('Civora_token');
+      localStorage.removeItem('Civora_user');
       // Only redirect if not already on the login page
       if (window.location.pathname.startsWith('/governmentdashboard') && window.location.pathname !== '/governmentdashboard') {
         window.location.href = '/governmentdashboard';

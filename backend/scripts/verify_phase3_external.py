@@ -41,7 +41,7 @@ def test_cloudinary():
 
         upload_res = cloudinary.uploader.upload(
             buf.getvalue(),
-            folder="civicguard_tests",
+            folder="Civora_tests",
             public_id="phase3_test_asset",
             overwrite=True,
         )
@@ -71,10 +71,10 @@ def test_resend():
         owner_email = "jeestudychannels@gmail.com"
         print(f"Sending verification email to: {owner_email}")
         res = resend.Emails.send({
-            "from": "CivicGuard <onboarding@resend.dev>",
+            "from": "Civora <onboarding@resend.dev>",
             "to": [owner_email],
-            "subject": "CivicGuard Phase 3 Live Verification",
-            "html": "<p>This is a real automated verification email from CivicGuard Phase 3 testing.</p>",
+            "subject": "Civora Phase 3 Live Verification",
+            "html": "<p>This is a real automated verification email from Civora Phase 3 testing.</p>",
         })
         msg_id = res.get("id") if isinstance(res, dict) else getattr(res, "id", None)
         print(f"Resend real email request: PASS (Message ID: {msg_id})")
@@ -242,7 +242,7 @@ def test_openmeteo():
 
 def run_all():
     print("=" * 60)
-    print("CivicGuard Phase 3: External Services Live Verification")
+    print("Civora Phase 3: External Services Live Verification")
     print("=" * 60)
     results = {}
     results["Cloudinary"] = test_cloudinary()

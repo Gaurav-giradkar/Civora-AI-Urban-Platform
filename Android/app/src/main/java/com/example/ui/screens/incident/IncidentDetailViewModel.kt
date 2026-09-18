@@ -3,7 +3,7 @@ package com.example.ui.screens.incident
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.data.model.IncidentReportItem
-import com.example.data.repository.CivicGuardRepository
+import com.example.data.repository.CivoraRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,7 +20,7 @@ data class IncidentDetailUiState(
 
 class IncidentDetailViewModel(
     private val incidentId: String,
-    private val repository: CivicGuardRepository
+    private val repository: CivoraRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(IncidentDetailUiState())

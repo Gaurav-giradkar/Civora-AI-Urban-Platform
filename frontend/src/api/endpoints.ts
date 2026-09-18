@@ -10,6 +10,11 @@ import {
   IncidentStatus,
   IncidentSeverity,
   HazardCategory,
+  ObservationCreatePayload,
+  ObservationIngestResponse,
+  BusUnit,
+  ObservationDetail,
+  CommandSummary,
 } from '../types';
 
 // Helper to decode JWT claims without external library
@@ -92,12 +97,17 @@ function mapBackendIncident(row: any): Incident {
     },
     department: row.department_name || (row.department_id ? 'Assigned Department' : 'Roads & Infrastructure'),
     ai_confidence: Math.round((row.confidence ?? 0.95) * 100),
-    report_count: row.report_count ?? 1,
+    report_count: row.report_count ?? 0,
+    observation_count: row.observation_count ?? 0,
+    distinct_bus_count: row.distinct_bus_count ?? 0,
+    reobservation_count: row.reobservation_count ?? 0,
+    first_observed_at: row.first_observed_at,
+    last_observed_at: row.last_observed_at,
     image_url:
       row.image_url ||
       'https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?auto=format&fit=crop&w=800&q=80',
-    reported_at: row.created_at || new Date().toISOString(),
-    updated_at: row.resolved_at || row.created_at || new Date().toISOString(),
+    reported_at: row.first_observed_at || row.created_at || new Date().toISOString(),
+    updated_at: row.last_observed_at || row.resolved_at || row.created_at || new Date().toISOString(),
     assigned_team_id: row.assigned_team_id,
     assigned_team_name: row.assigned_team_name,
     timeline: row.timeline || [
@@ -108,7 +118,7 @@ function mapBackendIncident(row: any): Incident {
         }),
         status: (row.status || 'under_review').toUpperCase() as IncidentStatus,
         note: `Incident registered in system.`,
-        actor: 'CivicGuard Triage',
+        actor: 'Civora Fleet Intelligence',
       },
     ],
   };
@@ -431,4 +441,39 @@ export async function updateFieldAssignmentStatusApi(
     description: t.summary || t.recommended_action || 'Field maintenance work order.',
     notes,
   };
+}
+
+// ----------------- Fleet Simulator Observations (Phase 1 Contract) -----------------
+export async function ingestObservationApi(
+  payload: ObservationCreatePayload
+): Promise<ObservationIngestResponse> {
+  const res = await apiClient.post('/api/observations', payload);
+  return res.data;
+}
+
+// ----------------- Command Center Intelligence Endpoints (Phase 3) -----------------
+export async function getCommandSummaryApi(): Promise<CommandSummary> {
+  const res = await apiClient.get('/api/observations/summary');
+  return res.data;
+}
+
+export async function getBusesApi(): Promise<BusUnit[]> {
+  const res = await apiClient.get('/api/observations/buses');
+  return res.data;
+}
+
+export async function getObservationsApi(params?: {
+  urban_issue_id?: string;
+  bus_id?: string;
+  limit?: number;
+}): Promise<ObservationDetail[]> {
+  const res = await apiClient.get('/api/observations', { params });
+  return res.data;
+}
+
+export async function getIncidentObservationsApi(
+  incidentId: string
+): Promise<ObservationDetail[]> {
+  const res = await apiClient.get(`/api/admin/incidents/${incidentId}/observations`);
+  return res.data;
 }

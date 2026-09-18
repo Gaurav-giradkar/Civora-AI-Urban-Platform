@@ -11,7 +11,7 @@ from sqlalchemy import create_engine, text
 
 def run_db_checks():
     print("=" * 60)
-    print("CivicGuard Phase 2: Neon PostgreSQL & PostGIS Verification")
+    print("Civora Phase 2: Neon PostgreSQL & PostGIS Verification")
     print("=" * 60)
 
     engine = create_engine(settings.DATABASE_URL)

@@ -6,8 +6,8 @@ import { Download, Sparkles } from 'lucide-react';
 export const CtaBand: React.FC = () => {
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/civicguard.apk';
-    link.download = 'civicguard.apk';
+    link.href = '/Civora.apk';
+    link.download = 'Civora.apk';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

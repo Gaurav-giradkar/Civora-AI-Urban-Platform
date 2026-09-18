@@ -13,8 +13,8 @@ import com.example.R
 
 object NotificationHelper {
 
-    const val CHANNEL_ID = "civicguard_hazards_channel"
-    const val CHANNEL_NAME = "CivicGuard Hazard Alerts & Reports"
+    const val CHANNEL_ID = "Civora_hazards_channel"
+    const val CHANNEL_NAME = "Civora Hazard Alerts & Reports"
 
     fun createNotificationChannel(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -42,7 +42,7 @@ object NotificationHelper {
         // Deep link into relevant screen (§5)
         val intent = Intent(
             Intent.ACTION_VIEW,
-            Uri.parse("civicguard://navigate?destination=$destination"),
+            Uri.parse("Civora://navigate?destination=$destination"),
             context,
             MainActivity::class.java
         ).apply {

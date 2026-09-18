@@ -1,5 +1,5 @@
 {
-  "name": "CivicGuard",
+  "name": "Civora",
   "description": "Civic hazard reporting and incident tracking platform for citizens",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]

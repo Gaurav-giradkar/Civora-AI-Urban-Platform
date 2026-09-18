@@ -35,7 +35,7 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
 
 
 
-app = FastAPI(title="CivicGuard ML Service", version="1.0.0", lifespan=lifespan)
+app = FastAPI(title="Civora ML Service", version="1.0.0", lifespan=lifespan)
 
 
 class DetectRequest(BaseModel):

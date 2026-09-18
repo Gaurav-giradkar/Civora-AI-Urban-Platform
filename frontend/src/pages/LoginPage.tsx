@@ -6,14 +6,14 @@ import { TextInput } from '../components/common/TextInput';
 import { Button } from '../components/common/Button';
 
 const DEMO_PRESETS = [
-  { role: 'admin', label: 'Admin Director', email: 'admin@civicguard.gov' },
-  { role: 'control_room', label: 'Control Room', email: 'control@civicguard.gov' },
-  { role: 'department_officer', label: 'Roads Officer', email: 'roads.officer@civicguard.gov' },
-  { role: 'field_team', label: 'Field Crew', email: 'field1@civicguard.gov' },
+  { role: 'admin', label: 'Admin Director', email: 'admin@Civora.gov' },
+  { role: 'control_room', label: 'Control Room', email: 'control@Civora.gov' },
+  { role: 'department_officer', label: 'Roads Officer', email: 'roads.officer@Civora.gov' },
+  { role: 'field_team', label: 'Field Crew', email: 'field1@Civora.gov' },
 ];
 
 export const LoginPage: React.FC = () => {
-  const [email, setEmail] = useState('admin@civicguard.gov');
+  const [email, setEmail] = useState('admin@Civora.gov');
   const [password, setPassword] = useState('password123');
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -98,7 +98,7 @@ export const LoginPage: React.FC = () => {
             <TextInput
               label="Staff Email"
               type="email"
-              placeholder="officer@civicguard.gov"
+              placeholder="officer@Civora.gov"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -178,7 +178,7 @@ export const LoginPage: React.FC = () => {
 
       {/* Footer */}
       <div className="text-center text-[12px] text-muted py-2">
-        <span>© {new Date().getFullYear()} CivicGuard Municipal Command Suite</span>
+        <span>© {new Date().getFullYear()} Civora Urban Intelligence Command Center</span>
       </div>
     </div>
   );

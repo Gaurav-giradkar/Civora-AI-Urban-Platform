@@ -1,4 +1,4 @@
-name: Build CivicGuard Android APK
+name: Build Civora Android APK
 
 on:
   push:
@@ -29,9 +29,9 @@ jobs:
         working-directory: Android
         run: gradle assembleDebug --stacktrace
 
-      - name: Upload CivicGuard APK Artifact
+      - name: Upload Civora APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: civicguard-app-debug
+          name: Civora-app-debug
           path: Android/app/build/outputs/apk/debug/*.apk
           retention-days: 14

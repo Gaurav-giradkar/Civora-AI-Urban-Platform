@@ -3,7 +3,7 @@ package com.example.ui.screens.myreports
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.data.model.IncidentReportItem
-import com.example.data.repository.CivicGuardRepository
+import com.example.data.repository.CivoraRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -18,7 +18,7 @@ data class MyReportsUiState(
 )
 
 class MyReportsViewModel(
-    private val repository: CivicGuardRepository
+    private val repository: CivoraRepository
 ) : ViewModel() {
 
     val isLoggedIn: StateFlow<Boolean> = repository.isLoggedInFlow

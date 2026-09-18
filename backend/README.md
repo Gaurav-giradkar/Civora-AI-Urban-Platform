@@ -1,4 +1,4 @@
-# CivicGuard
+# Civora
 
 A civic-issue reporting platform: citizens report hazards (potholes, flooded
 roads, garbage piles, damaged roads) with a photo and location; a YOLO11
@@ -21,7 +21,7 @@ synchronously, when a report is submitted (no job queue in this version).
 ## Repository layout
 
 ```
-civicguard/
+Civora/
 ├── api/            FastAPI backend
 ├── ml-service/     FastAPI YOLO microservice
 ├── migrations/     Alembic migrations (schema lives in api/app/models.py)
@@ -36,7 +36,7 @@ civicguard/
 
 ```bash
 git clone <this-repo>
-cd civicguard
+cd Civora
 cp api/.env.example api/.env
 cp ml-service/.env.example ml-service/.env
 ```
@@ -109,11 +109,11 @@ Geography columns or run ST_DWithin/ST_Distance). The easiest way locally is
 Docker:
 
 ```bash
-docker run -d --name civicguard-test-db -p 5432:5432 \
-  -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=civicguard_test \
+docker run -d --name Civora-test-db -p 5432:5432 \
+  -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=Civora_test \
   postgis/postgis:16-3.4
 
-export TEST_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/civicguard_test
+export TEST_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/Civora_test
 pytest tests/ -v
 ```
 
@@ -125,9 +125,9 @@ Hugging Face account.
 
 `render.yaml` defines both services:
 
-- **`civicguard-api`** — Docker build from `api/Dockerfile`, health check at
+- **`Civora-api`** — Docker build from `api/Dockerfile`, health check at
   `/health`, free plan.
-- **`civicguard-ml`** — Docker build from `ml-service/Dockerfile`, health
+- **`Civora-ml`** — Docker build from `ml-service/Dockerfile`, health
   check at `/health`, free plan.
 
 All environment variables are marked `sync: false`, meaning you set the real

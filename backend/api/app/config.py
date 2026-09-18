@@ -1,5 +1,5 @@
 """
-Centralized configuration for the CivicGuard API service.
+Centralized configuration for the Civora API service.
 
 Every environment variable the api/ service depends on is declared here and
 nowhere else. Import `settings` from this module instead of calling
@@ -23,7 +23,7 @@ class Settings(BaseSettings):
 
 
     # --- Database ---
-    DATABASE_URL: str = "postgresql://postgres:postgres@localhost:5432/civicguard"
+    DATABASE_URL: str = "postgresql://postgres:postgres@localhost:5432/Civora"
 
     # --- Cloudinary (image storage) ---
     CLOUDINARY_CLOUD_NAME: str = "dev-cloud"
@@ -39,7 +39,7 @@ class Settings(BaseSettings):
     # --- Web Push / VAPID ---
     VAPID_PUBLIC_KEY: str = "dev-vapid-public"
     VAPID_PRIVATE_KEY: str = "dev-vapid-private"
-    VAPID_ADMIN_EMAIL: str = "admin@civicguard.gov"
+    VAPID_ADMIN_EMAIL: str = "admin@Civora.gov"
 
     # --- Hugging Face Inference API ---
     HUGGINGFACE_API_TOKEN: str = "dev-hf-token"
@@ -58,13 +58,13 @@ class Settings(BaseSettings):
     ANON_REPORT_DAILY_LIMIT: int = 3
 
     # --- Auth / JWT ---
-    JWT_SECRET_KEY: str = "civicguard-dev-super-secret-key-32-chars"
+    JWT_SECRET_KEY: str = "Civora-dev-super-secret-key-32-chars"
     JWT_ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
     REFRESH_TOKEN_EXPIRE_DAYS: int = 30
 
     # --- Internal service-to-service auth ---
-    INTERNAL_API_KEY: str = "civicguard-dev-internal-api-key"
+    INTERNAL_API_KEY: str = "Civora-dev-internal-api-key"
 
     # --- ml-service ---
     ML_SERVICE_URL: str = "http://localhost:8001"

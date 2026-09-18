@@ -13,10 +13,11 @@ from app.routers import (
     devices,
     field_team,
     internal,
+    observations,
     reports,
 )
 
-app = FastAPI(title="CivicGuard API", version="1.0.0")
+app = FastAPI(title="Civora API", version="1.0.0")
 
 # Build CORS origins list from settings and standard local dev ports
 _cors_origins = {
@@ -60,4 +61,5 @@ app.include_router(admin_analytics.router)
 app.include_router(admin_predictions.router)
 app.include_router(field_team.router)
 app.include_router(internal.router)
+app.include_router(observations.router)
 

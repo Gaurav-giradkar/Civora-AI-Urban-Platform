@@ -23,7 +23,7 @@ OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "runs")
 
 def verify():
     print("=" * 60)
-    print("CivicGuard YOLO11s Model Real Inference Verification")
+    print("Civora YOLO11s Model Real Inference Verification")
     print("=" * 60)
 
     weights_file = Path(WEIGHTS_PATH).resolve()

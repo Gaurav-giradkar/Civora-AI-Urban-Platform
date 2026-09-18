@@ -134,8 +134,70 @@ class Incident(Base):
         UUID(as_uuid=True), ForeignKey("departments.id"), nullable=True
     )
     report_count: Mapped[int] = mapped_column(Integer, server_default="1")
+    # Civora adds machine-observation evidence without changing the legacy
+    # citizen-report relationship above.  Existing incidents continue to work
+    # as Urban Issues; these fields are populated only by the observation flow.
+    observation_count: Mapped[int] = mapped_column(Integer, server_default="0")
+    distinct_bus_count: Mapped[int] = mapped_column(Integer, server_default="0")
+    reobservation_count: Mapped[int] = mapped_column(Integer, server_default="0")
+    first_observed_at: Mapped[object | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    last_observed_at: Mapped[object | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[object] = mapped_column(DateTime(timezone=True), server_default=func.now())
     resolved_at: Mapped[object | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class Bus(Base):
+    __tablename__ = "buses"
+
+    id: Mapped[uuid.UUID] = _uuid_pk()
+    # The operational bus identifier (for example, Bus-017) is intentionally
+    # stable and is the value observations preserve and expose to the UI.
+    bus_id: Mapped[str] = mapped_column(Text, unique=True, nullable=False)
+    route_id: Mapped[str | None] = mapped_column(Text, nullable=True)
+    display_name: Mapped[str | None] = mapped_column(Text, nullable=True)
+    status: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[object] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[object] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
+    )
+
+
+class Observation(Base):
+    __tablename__ = "observations"
+
+    id: Mapped[uuid.UUID] = _uuid_pk()
+    event_id: Mapped[str] = mapped_column(Text, unique=True, nullable=False)
+    # References the externally meaningful bus identifier, rather than a
+    # hidden surrogate, so source identity remains durable in exports.
+    bus_id: Mapped[str] = mapped_column(Text, ForeignKey("buses.bus_id"), nullable=False)
+    route_id: Mapped[str | None] = mapped_column(Text, nullable=True)
+    urban_issue_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("incidents.id"), nullable=True
+    )
+    observed_at: Mapped[object] = mapped_column(DateTime(timezone=True), nullable=False)
+    location = mapped_column(Geography(geometry_type="POINT", srid=4326), nullable=False)
+    detected_class: Mapped[str] = mapped_column(Text, nullable=False)
+    confidence: Mapped[float] = mapped_column(Float, nullable=False)
+    image_url: Mapped[str | None] = mapped_column(Text, nullable=True)
+    severity: Mapped[str | None] = mapped_column(Text, nullable=True)
+    source_metadata: Mapped[dict | None] = mapped_column(JSONB, nullable=True)
+    gnss_accuracy_meters: Mapped[float | None] = mapped_column(Float, nullable=True)
+    created_at: Mapped[object] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class IssueReobservation(Base):
+    __tablename__ = "issue_reobservations"
+
+    id: Mapped[uuid.UUID] = _uuid_pk()
+    urban_issue_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("incidents.id"), nullable=False
+    )
+    observation_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("observations.id"), unique=True, nullable=False
+    )
+    observed_at: Mapped[object] = mapped_column(DateTime(timezone=True), nullable=False)
+    prior_issue_status: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[object] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
 class Ticket(Base):

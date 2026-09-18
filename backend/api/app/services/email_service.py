@@ -9,7 +9,7 @@ logger = get_logger(__name__)
 
 resend.api_key = settings.RESEND_API_KEY
 
-_DEFAULT_FROM = "CivicGuard <onboarding@resend.dev>"
+_DEFAULT_FROM = "Civora <onboarding@resend.dev>"
 
 
 

@@ -30,7 +30,7 @@ class HazardDetectionResult(TypedDict):
 
 
 def _get_ml_service_url() -> str:
-    raw = (settings.ML_SERVICE_URL or "https://civicguard-ml.onrender.com").strip().rstrip("/")
+    raw = (settings.ML_SERVICE_URL or "https://Civora-ml.onrender.com").strip().rstrip("/")
     if not raw.startswith("http://") and not raw.startswith("https://"):
         if ":" in raw:
             raw = f"http://{raw}"

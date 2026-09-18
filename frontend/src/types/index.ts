@@ -43,6 +43,11 @@ export interface Incident {
   department: string;
   ai_confidence: number;
   report_count: number;
+  observation_count?: number;
+  distinct_bus_count?: number;
+  reobservation_count?: number;
+  first_observed_at?: string;
+  last_observed_at?: string;
   image_url: string;
   reported_at: string;
   updated_at: string;
@@ -144,4 +149,103 @@ export interface FieldAssignment {
   image_url: string;
   description: string;
   notes?: string;
+}
+
+// ----------------- Civora Bus Observation Types (Phase 1 Contract) -----------------
+export type DetectedCivicClass = 'pothole' | 'flooded_road' | 'garbage_pile' | 'damaged_road';
+
+export interface ObservationCreatePayload {
+  event_id: string;
+  bus_id: string;
+  route_id?: string;
+  bus_display_name?: string;
+  bus_status?: string;
+  observed_at: string;
+  latitude: number;
+  longitude: number;
+  detected_class: DetectedCivicClass;
+  confidence: number;
+  image_url?: string;
+  severity?: string;
+  source_metadata?: Record<string, any>;
+  gnss_accuracy_meters?: number;
+}
+
+export type CorrelationType = 'new_issue' | 'corroboration' | 'reobservation';
+
+export interface ObservationIngestResponse {
+  observation_id: string;
+  event_id: string;
+  bus_id: string;
+  detected_class: string;
+  confidence: number;
+  latitude: number;
+  longitude: number;
+  urban_issue_id: string;
+  observation_count: number;
+  distinct_bus_count: number;
+  priority_score: number;
+  priority_level: string;
+  correlation_type: CorrelationType;
+}
+
+export interface SimulatorTimelineEvent {
+  id: string;
+  bus_id: string;
+  route_id: string;
+  detected_class: string;
+  confidence: number;
+  latitude: number;
+  longitude: number;
+  observed_at: string;
+  correlation_type: CorrelationType;
+  urban_issue_id: string;
+  observation_count: number;
+  distinct_bus_count: number;
+  priority_score: number;
+  priority_level: string;
+}
+
+
+export interface BusUnit {
+  id: string;
+  bus_id: string;
+  route_id?: string;
+  display_name?: string;
+  status: string;
+  latest_observation_time?: string;
+  latest_detected_class?: string;
+  latest_latitude?: number;
+  latest_longitude?: number;
+  total_observations: number;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface ObservationDetail {
+  id: string;
+  event_id: string;
+  bus_id: string;
+  route_id?: string;
+  urban_issue_id?: string;
+  observed_at: string;
+  latitude: number;
+  longitude: number;
+  detected_class: string;
+  confidence: number;
+  image_url?: string;
+  severity?: string;
+  gnss_accuracy_meters?: number;
+  is_reobservation: boolean;
+  created_at?: string;
+}
+
+export interface CommandSummary {
+  active_buses_count: number;
+  total_observations: number;
+  total_urban_issues: number;
+  high_priority_issues: number;
+  critical_issues: number;
+  resolved_issues: number;
+  system_status: string;
 }

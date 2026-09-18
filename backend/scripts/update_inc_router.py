@@ -1,4 +1,7 @@
-from datetime import date, datetime, timezone
+"""Script to update admin_incidents.py with full Civora serialization and observation details."""
+INC_ROUTER_PATH = r"c:\My_stuff\Civora\backend\api\app\routers\admin_incidents.py"
+
+inc_code = '''from datetime import date, datetime, timezone
 from typing import Optional
 from uuid import UUID
 
@@ -302,3 +305,8 @@ def update_incident_status(
     db.commit()
     db.refresh(incident)
     return _serialize_incident(incident, db)
+'''
+
+with open(INC_ROUTER_PATH, "w", encoding="utf-8") as f:
+    f.write(inc_code)
+print("Updated admin_incidents.py successfully!")

@@ -27,8 +27,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     // Check saved session on mount
     try {
-      const storedToken = localStorage.getItem('civicguard_token');
-      const storedUser = localStorage.getItem('civicguard_user');
+      const storedToken = localStorage.getItem('Civora_token');
+      const storedUser = localStorage.getItem('Civora_user');
       if (storedToken && storedUser) {
         setToken(storedToken);
         setUser(JSON.parse(storedUser));
@@ -47,8 +47,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const { token: receivedToken, user: receivedUser } = await loginApi(email, password);
       setToken(receivedToken);
       setUser(receivedUser);
-      localStorage.setItem('civicguard_token', receivedToken);
-      localStorage.setItem('civicguard_user', JSON.stringify(receivedUser));
+      localStorage.setItem('Civora_token', receivedToken);
+      localStorage.setItem('Civora_user', JSON.stringify(receivedUser));
       return receivedUser;
     } finally {
       setIsLoading(false);
@@ -68,8 +68,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setUser(null);
     setToken(null);
     guestStore.reset();
-    localStorage.removeItem('civicguard_token');
-    localStorage.removeItem('civicguard_user');
+    localStorage.removeItem('Civora_token');
+    localStorage.removeItem('Civora_user');
   };
 
   const logout = () => {
@@ -80,8 +80,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setToken(null);
     setUser(null);
     setIsGuestMode(false);
-    localStorage.removeItem('civicguard_token');
-    localStorage.removeItem('civicguard_user');
+    localStorage.removeItem('Civora_token');
+    localStorage.removeItem('Civora_user');
   };
 
   const hasRole = (roles: UserRole[]): boolean => {

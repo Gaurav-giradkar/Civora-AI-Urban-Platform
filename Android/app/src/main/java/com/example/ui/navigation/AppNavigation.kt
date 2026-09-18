@@ -11,7 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import androidx.navigation.navDeepLink
-import com.example.data.repository.CivicGuardRepository
+import com.example.data.repository.CivoraRepository
 import com.example.ui.screens.alerts.AlertsScreen
 import com.example.ui.screens.alerts.AlertsViewModel
 import com.example.ui.screens.auth.AuthViewModel
@@ -33,7 +33,7 @@ import java.nio.charset.StandardCharsets
 @Composable
 fun AppNavigation(
     navController: NavHostController,
-    repository: CivicGuardRepository,
+    repository: CivoraRepository,
     startDestination: String = Screen.Home.route
 ) {
     NavHost(
@@ -168,7 +168,7 @@ fun AppNavigation(
         // 6. My Reports Screen
         composable(
             route = Screen.MyReports.route,
-            deepLinks = listOf(navDeepLink { uriPattern = "civicguard://navigate?destination=my_reports" })
+            deepLinks = listOf(navDeepLink { uriPattern = "Civora://navigate?destination=my_reports" })
         ) {
             val myReportsViewModel = remember { MyReportsViewModel(repository) }
             MyReportsScreen(
@@ -204,7 +204,7 @@ fun AppNavigation(
         // 7. Alerts Screen
         composable(
             route = Screen.Alerts.route,
-            deepLinks = listOf(navDeepLink { uriPattern = "civicguard://navigate?destination=alerts" })
+            deepLinks = listOf(navDeepLink { uriPattern = "Civora://navigate?destination=alerts" })
         ) {
             val alertsViewModel = remember { AlertsViewModel(repository) }
             AlertsScreen(

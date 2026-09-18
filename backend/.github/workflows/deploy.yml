@@ -11,4 +11,4 @@ jobs:
       - name: No-op - deployment is handled by Render
         run: |
           echo "Deployment is handled by Render's GitHub integration (auto-deploy on push to main)."
-          echo "Configure auto-deploy for both civicguard-api and civicguard-ml in Render's dashboard - not here."
+          echo "Configure auto-deploy for both Civora-api and Civora-ml in Render's dashboard - not here."

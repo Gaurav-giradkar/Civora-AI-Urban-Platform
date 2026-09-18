@@ -15,7 +15,7 @@ import { PredictionsPage } from './pages/dashboard/PredictionsPage';
 import { AnalyticsPage } from './pages/dashboard/AnalyticsPage';
 import { FieldAssignmentsPage } from './pages/field/FieldAssignmentsPage';
 import { UserRole } from './types';
-import { CitizenAppReplicaPage } from './pages/CitizenAppReplicaPage';
+import { FleetSimulatorPage } from './pages/FleetSimulatorPage';
 
 
 // Route Guard: Ensures user is authenticated
@@ -80,10 +80,10 @@ export function App() {
           {/* Public Landing Zone */}
           <Route path="/" element={<LandingPage />} />
 
-          {/* Citizen App Interactive Replica & Simulator */}
-          <Route path="/app" element={<CitizenAppReplicaPage />} />
-          <Route path="/citizen" element={<CitizenAppReplicaPage />} />
-          <Route path="/simulator" element={<CitizenAppReplicaPage />} />
+          {/* Civora Fleet Simulator */}
+          <Route path="/simulator" element={<FleetSimulatorPage />} />
+          <Route path="/app" element={<FleetSimulatorPage />} />
+          <Route path="/citizen" element={<FleetSimulatorPage />} />
 
           {/* Government Login */}
           <Route path="/governmentdashboard" element={<LoginRoute />} />

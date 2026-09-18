@@ -3,7 +3,7 @@ package com.example.ui.screens.alerts
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.data.model.AlertItem
-import com.example.data.repository.CivicGuardRepository
+import com.example.data.repository.CivoraRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,7 +16,7 @@ data class AlertsUiState(
 )
 
 class AlertsViewModel(
-    private val repository: CivicGuardRepository
+    private val repository: CivoraRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(AlertsUiState())

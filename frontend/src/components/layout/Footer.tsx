@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
                 <Shield className="w-3.5 h-3.5" />
               </div>
               <span className="font-sans font-bold text-[18px] text-ink">
-                Civic<span className="text-primary">Guard</span>
+              Civ<span className="text-primary">ora</span>
               </span>
             </Link>
             <p className="type-body-sm text-muted max-w-xs">
@@ -69,7 +69,7 @@ export const Footer: React.FC = () => {
         {/* Legal Band */}
         <div className="pt-8 border-t border-hairline flex flex-col md:flex-row items-center justify-between gap-4 text-[13px] text-muted">
           <div className="flex items-center gap-6 flex-wrap">
-            <span>© {new Date().getFullYear()} CivicGuard Initiative. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} Civora Urban Intelligence. All rights reserved.</span>
             <span>Government Infrastructure & Citizen Safety Suite</span>
           </div>
 

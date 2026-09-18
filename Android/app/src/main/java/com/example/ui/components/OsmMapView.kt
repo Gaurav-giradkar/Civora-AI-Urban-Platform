@@ -43,7 +43,7 @@ fun OsmMapView(
     // Initialize osmdroid configuration
     remember {
         Configuration.getInstance().load(context, context.getSharedPreferences("osmdroid", Context.MODE_PRIVATE))
-        Configuration.getInstance().userAgentValue = "CivicGuard-Android/1.0"
+        Configuration.getInstance().userAgentValue = "Civora-Android/1.0"
     }
 
     val mapView = remember {

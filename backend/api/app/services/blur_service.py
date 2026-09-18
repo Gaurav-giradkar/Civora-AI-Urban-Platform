@@ -95,4 +95,4 @@ def blur_sensitive_regions(image_url: str) -> str:
             detail="Failed to encode blurred image",
         )
 
-    return upload_image(encoded.tobytes(), folder="civicguard/blurred")
+    return upload_image(encoded.tobytes(), folder="Civora/blurred")

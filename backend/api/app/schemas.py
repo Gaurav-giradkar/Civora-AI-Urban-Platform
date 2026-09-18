@@ -162,13 +162,20 @@ class IncidentAdminOut(BaseModel):
     confidence: Optional[float] = None
     ward: Optional[str] = None
     department_id: Optional[UUID] = None
-    report_count: int
+    report_count: int = 0
+    observation_count: int = 0
+    distinct_bus_count: int = 0
+    reobservation_count: int = 0
+    first_observed_at: Optional[datetime] = None
+    last_observed_at: Optional[datetime] = None
     created_at: datetime
     resolved_at: Optional[datetime] = None
     latitude: Optional[float] = None
     longitude: Optional[float] = None
     image_url: Optional[str] = None
     description: Optional[str] = None
+    assigned_team_id: Optional[UUID] = None
+    assigned_team_name: Optional[str] = None
 
 
 
@@ -283,3 +290,89 @@ class AIResultUpdate(BaseModel):
     ai_category: Optional[str] = None
     ai_confidence: Optional[float] = None
     status: Optional[str] = None
+
+
+# ---------------------------------------------------------------------------
+# Civora bus observations
+# ---------------------------------------------------------------------------
+
+class ObservationCreate(BaseModel):
+    event_id: str = Field(min_length=1, max_length=255)
+    bus_id: str = Field(min_length=1, max_length=100)
+    route_id: Optional[str] = Field(default=None, max_length=100)
+    bus_display_name: Optional[str] = Field(default=None, max_length=255)
+    bus_status: Optional[str] = Field(default=None, max_length=50)
+    observed_at: datetime
+    latitude: float = Field(ge=-90, le=90)
+    longitude: float = Field(ge=-180, le=180)
+    # Must remain aligned with backend/ml-service/app/detector.py's trained
+    # YOLO model.  Phase 1 does not advertise unsupported civic classes.
+    detected_class: Literal["pothole", "flooded_road", "garbage_pile", "damaged_road"]
+    confidence: float = Field(ge=0, le=1)
+    image_url: Optional[str] = None
+    severity: Optional[str] = Field(default=None, max_length=50)
+    source_metadata: Optional[dict[str, Any]] = None
+    gnss_accuracy_meters: Optional[float] = Field(default=None, ge=0)
+
+
+class ObservationIngestOut(BaseModel):
+    observation_id: UUID
+    event_id: str
+    bus_id: str
+    detected_class: str
+    confidence: float
+    latitude: float
+    longitude: float
+    urban_issue_id: UUID
+    observation_count: int
+    distinct_bus_count: int
+    priority_score: float
+    priority_level: str
+    correlation_type: Literal["new_issue", "corroboration", "reobservation"]
+
+
+class BusOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: UUID
+    bus_id: str
+    route_id: Optional[str] = None
+    display_name: Optional[str] = None
+    status: Optional[str] = None
+    latest_observation_time: Optional[datetime] = None
+    latest_detected_class: Optional[str] = None
+    latest_latitude: Optional[float] = None
+    latest_longitude: Optional[float] = None
+    total_observations: int = 0
+    created_at: datetime
+    updated_at: Optional[datetime] = None
+
+
+class ObservationDetailOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: UUID
+    event_id: str
+    bus_id: str
+    route_id: Optional[str] = None
+    urban_issue_id: Optional[UUID] = None
+    observed_at: datetime
+    latitude: float
+    longitude: float
+    detected_class: str
+    confidence: float
+    image_url: Optional[str] = None
+    severity: Optional[str] = None
+    gnss_accuracy_meters: Optional[float] = None
+    is_reobservation: bool = False
+    created_at: datetime
+
+
+class CommandSummaryOut(BaseModel):
+    active_buses_count: int
+    total_observations: int
+    total_urban_issues: int
+    high_priority_issues: int
+    critical_issues: int
+    resolved_issues: int
+    system_status: str = "online"

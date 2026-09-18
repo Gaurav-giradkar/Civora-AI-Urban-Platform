@@ -48,3 +48,33 @@ def score_severity(
         level = "low"
 
     return score, level
+
+
+def score_urban_issue_priority(
+    category: str,
+    confidence: float,
+    observation_count: int,
+    distinct_bus_count: int,
+    reobservation_count: int = 0,
+) -> tuple[float, str]:
+    """Return a transparent Phase-1 Civora priority score in the 0..1 range.
+
+    This deliberately starts with the existing category/confidence formula,
+    then adds bounded evidence increments.  It remains deterministic and does
+    not claim a learned severity model.
+    """
+    base_score, _ = score_severity(category, confidence, near_critical_infra=False)
+    corroboration_bonus = min(0.20, max(0, observation_count - 1) * 0.05)
+    distinct_bus_bonus = min(0.15, max(0, distinct_bus_count - 1) * 0.05)
+    revisit_bonus = min(0.05, max(0, reobservation_count) * 0.05)
+    score = max(0.0, min(1.0, base_score + corroboration_bonus + distinct_bus_bonus + revisit_bonus))
+
+    if score >= 0.75:
+        level = "critical"
+    elif score >= 0.55:
+        level = "high"
+    elif score >= 0.35:
+        level = "medium"
+    else:
+        level = "low"
+    return score, level

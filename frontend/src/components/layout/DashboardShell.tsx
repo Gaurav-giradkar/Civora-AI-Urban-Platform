@@ -16,6 +16,7 @@ import {
   X,
   Radio,
   Sparkles,
+  Bus,
 } from 'lucide-react';
 
 
@@ -78,6 +79,12 @@ export const DashboardShell: React.FC = () => {
       icon: <BarChart3 className="w-4 h-4" />,
       roles: ['admin', 'control_room', 'department_officer'],
     },
+    {
+      to: '/simulator',
+      label: 'Fleet Simulator',
+      icon: <Bus className="w-4 h-4" />,
+      roles: ['admin', 'control_room', 'department_officer'],
+    },
   ];
 
   const visibleNavItems = navItems.filter(
@@ -95,10 +102,10 @@ export const DashboardShell: React.FC = () => {
           </div>
           <div className="flex flex-col">
             <span className="font-sans font-bold text-[16px] leading-none text-ink">
-              Civic<span className="text-primary">Guard</span>
+              Civ<span className="text-primary">ora</span>
             </span>
             <span className="text-muted text-[11px] font-mono tracking-wider uppercase mt-1">
-              Command Suite
+              Command Center
             </span>
           </div>
         </div>

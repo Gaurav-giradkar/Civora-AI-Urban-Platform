@@ -11,7 +11,7 @@ import {
 export const SEED_USERS: User[] = [
   {
     id: 'usr_001',
-    email: 'admin@civicguard.gov',
+    email: 'admin@Civora.gov',
     name: 'Director Eleanor Vance',
     role: 'admin',
     department: 'Executive Administration',
@@ -19,7 +19,7 @@ export const SEED_USERS: User[] = [
   },
   {
     id: 'usr_002',
-    email: 'control@civicguard.gov',
+    email: 'control@Civora.gov',
     name: 'Marcus Chen',
     role: 'control_room',
     department: 'Central Dispatch Command',
@@ -27,7 +27,7 @@ export const SEED_USERS: User[] = [
   },
   {
     id: 'usr_003',
-    email: 'roads.officer@civicguard.gov',
+    email: 'roads.officer@Civora.gov',
     name: 'Sgt. Priya Sharma',
     role: 'department_officer',
     department: 'Roads & Infrastructure',
@@ -35,7 +35,7 @@ export const SEED_USERS: User[] = [
   },
   {
     id: 'usr_004',
-    email: 'water.officer@civicguard.gov',
+    email: 'water.officer@Civora.gov',
     name: 'Tariq Al-Mansoor',
     role: 'department_officer',
     department: 'Water & Sanitation',
@@ -43,7 +43,7 @@ export const SEED_USERS: User[] = [
   },
   {
     id: 'usr_005',
-    email: 'electrical.officer@civicguard.gov',
+    email: 'electrical.officer@Civora.gov',
     name: 'Vikram Sethi',
     role: 'department_officer',
     department: 'Electrical & Lighting',
@@ -51,7 +51,7 @@ export const SEED_USERS: User[] = [
   },
   {
     id: 'usr_006',
-    email: 'field1@civicguard.gov',
+    email: 'field1@Civora.gov',
     name: 'Carlos Mendez (Unit Alpha-1)',
     role: 'field_team',
     department: 'Roads & Infrastructure',
@@ -59,7 +59,7 @@ export const SEED_USERS: User[] = [
   },
   {
     id: 'usr_007',
-    email: 'field2@civicguard.gov',
+    email: 'field2@Civora.gov',
     name: 'Amina Diallo (Hydraulic Unit)',
     role: 'field_team',
     department: 'Water & Sanitation',

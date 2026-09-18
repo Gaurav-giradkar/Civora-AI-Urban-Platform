@@ -2,7 +2,7 @@ package com.example.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Primary brand colors (CivicGuard design system)
+// Primary brand colors (Civora design system)
 val CivicBlue = Color(0xFF0052FF)
 val CivicBlueDark = Color(0xFF003EC4)
 val CivicBlueLight = Color(0xFF3375FF)
